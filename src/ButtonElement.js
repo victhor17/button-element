@@ -9,7 +9,10 @@ export class ButtonElement extends LitElement {
     newString: { type: String, attribute: 'new-string' },// create attribute 'new-prop'
     array: { type: Array, },
     splitter: { type: String, value: ' ' },
-    joinner: {type: String}
+    joinner: { type: String },
+    showBoolean: {
+      type: Boolean
+    }
   };
 
 
@@ -18,7 +21,8 @@ export class ButtonElement extends LitElement {
     this.counter = 5;
     this.newString = '';
     this.splitter = ' ';
-    this.joinner=','
+    this.joinner = ',';
+    this.showBoolean = false;
   }
 
   _Split() {
@@ -39,20 +43,20 @@ export class ButtonElement extends LitElement {
     return html`
     <div class='button-div'>
       <button class='button' @click=${this._Split}>Split string </button>
-     
+    
       <button class='button' @click=${this._Join}>Join array </button>
-      <input type='text' @input=${this.inputChange}/>
+      <input type='text' @input=${this.inputChange} />
     </div>
     <div class='flex'>
-    <div>String: ${this.newString}</div>
-    <div>Array result: ${this.array?.map((item, index) => (
-      html`
-      <div>${index}: ${item}</div>
-    `
-    ))}</div>
-  </div>
-
-  <slot></slot>
+      <div>String: ${this.newString}</div>
+      <div>Array result: ${this.array?.map((item, index) => (
+        html`
+        <div>${index}: ${item}</div>
+        `
+        ))}</div>
+    </div>
+    
+    <slot></slot>
     `;
   }
 }
