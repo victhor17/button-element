@@ -32,7 +32,7 @@ export class ButtonElement extends LitElement {
   }
 
   _Join() {
-    this.newString = this.array?.join(',');
+    this.newString = this.array?.join(this.joinner);
   }
 
   render() {
